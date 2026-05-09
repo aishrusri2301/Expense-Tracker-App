@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: #fff9fd;
+  --foreground: #22223b;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #111124;
+  --foreground: #f7f4ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(255, 215, 232, 0.95), transparent 28%),
+    radial-gradient(circle at 84% 8%, rgba(216, 236, 255, 0.95), transparent 26%),
+    radial-gradient(circle at 50% 90%, rgba(216, 248, 223, 0.9), transparent 30%),
+    var(--background);
+  color: var(--foreground);
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(126, 58, 242, 0.26), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(14, 165, 233, 0.18), transparent 25%),
+    radial-gradient(circle at 50% 95%, rgba(16, 185, 129, 0.16), transparent 32%),
+    var(--background);
+}
+
+::selection {
+  background: #ffd7e8;
+  color: #22223b;
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-[2rem] border border-white/70 bg-white/75 shadow-pastel backdrop-blur-xl dark:border-white/10 dark:bg-white/10;
+  }
+
+  .pastel-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-3 text-sm font-bold text-white shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:shadow-pastel active:translate-y-0 dark:bg-white dark:text-ink;
+  }
+
+  .soft-input {
+    @apply w-full rounded-[1.5rem] border border-white/80 bg-white/80 px-4 py-3 text-sm text-ink outline-none transition focus:border-purple-300 focus:ring-4 focus:ring-purple-200/60 dark:border-white/10 dark:bg-white/10 dark:text-white dark:placeholder:text-white/45;
+  }
+}
